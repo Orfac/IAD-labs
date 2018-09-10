@@ -24,19 +24,23 @@
             border-style: solid;
             text-align: center;
         }
-        td:hover
+        #var:hover
         {
             color: #00ff00;
+        }
+        #const:hover
+        {
+            color: #000000;
         }
     </style>
 </head> 
 <body> 
     <table>
-    <tr> 
+    <tr id="const"> 
         <td>X</td>
         <td>Y</td>
         <td>R</td> 
-        <td class="state">Состояние</td> 
+        <td>Состояние</td> 
         <td>Время</td> 
         <td>Время работы скрипта</td>  
     </tr>
@@ -53,7 +57,7 @@
           
       $time = microtime(true) - $start;
       echo "
-      <tr>
+      <tr id='var'>
         <td>$x</td> 
         <td>$y</td> 
         <td>$r</td>            
