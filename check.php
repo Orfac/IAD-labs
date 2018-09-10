@@ -22,11 +22,12 @@
         {
             font-family: tahoma;
             border-style: solid;
+            border-color: #0080ff;
             text-align: center;
         }
         #var:hover
         {
-            color: #00ff00;
+            color: #0000e6;
         }
         #const:hover
         {
