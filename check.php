@@ -13,16 +13,30 @@
     <meta charset='UTF-8'> 
     <title>Проверка</title>
     <style type="text/css">
-        
+        table 
+        {
+            color: #000000;
+            margin: 0 auto;
+        }
+        table td
+        {
+            font-family: tahoma;
+            border-style: solid;
+            text-align: center;
+        }
+        td:hover
+        {
+            color: #00ff00;
+        }
     </style>
 </head> 
 <body> 
     <table>
-    <tr>  
+    <tr> 
         <td>X</td>
         <td>Y</td>
         <td>R</td> 
-        <td>Состояние</td> 
+        <td class="state">Состояние</td> 
         <td>Время</td> 
         <td>Время работы скрипта</td>  
     </tr>
