@@ -5,7 +5,7 @@
 <head>
   <meta charset="UTF-8">
   <title> Вариант 52545659</title>
-  <style src="main.css"></style>
+  <link rel="stylesheet" type="text/css" href="main.css">
   <script src="main.js" type="text/javascript"></script>
 </head>
 <body>
