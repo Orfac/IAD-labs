@@ -1,16 +1,15 @@
 function validate() {
-    var x = document.forms["params"]["X"].value;
+    var x = document.getElementById("x-value").innerText;
     var y = document.forms["params"]["Y"].value;
     var r = document.forms["params"]["R"].value;
-    console.log(x[0]);
-    console.log(y[0]);
+
     var isCorrect = true;
     var errorMessage = "";
     if (x === "") {
         isCorrect = false;
         errorMessage += "Неккоректно задано значение X\n";
     }
-    if (y === "" || isNaN(y) || y <= "-3" || y >= "3") {
+    if (y === "" || isNaN(y) || y <= "-5" || y >= "3") {
         errorMessage += "Некорректно задано значение Y\n";
         isCorrect = false;
     }
@@ -23,5 +22,17 @@ function validate() {
     } else {
         alert(errorMessage);
         return false;
+    }
+}
+
+function isInt(value) {
+    return parseInt(value, 10) === value;
+}
+
+function setX(button) {
+    if (button != null) {
+        var buttonValue = Number(button.value);
+        if (!isNaN(buttonValue) && buttonValue >= -5 && buttonValue <= 3)
+            document.getElementById("x-value").innerText = button.value;
     }
 }

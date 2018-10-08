@@ -9,16 +9,21 @@ li
     font-weight: bold;
 }
 
-input
+.image img
 {
-    padding: 5px 10px;
-    margin-top: 20px;
-}
-.image
-{
-    margin: auto; width: 200px;
+
+    
+    border-width: 10px 5px 5px 5px;
+    display: block;
+    margin: auto;
 }
 .input-field
 {
+    padding: 5px 10px;
+    margin-top: 20px;
     text-align: center;
+}
+
+#x-label li {
+    display: inline;
 }
