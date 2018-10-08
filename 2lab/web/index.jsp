@@ -27,7 +27,7 @@
             <li><b> X: </b></li>
             <li id="x-value"></li>
         </ul>
-        <%for (int i = -5; i < 3; i++) { %>
+        <%for (int i = -5; i <= 3; i++) { %>
         <input type="button" name="X" value="<%= i %>" onclick="setX(this)">
         <%}%>
 
@@ -36,7 +36,10 @@
         <b> Y: </b> <input type="text" name="Y" placeholder="(-5 .. 3)">
     </div>
     <div class="input-field">
-        <b> R: </b> <input type="text" name="R" placeholder="(2 .. 5)">
+        <b>R: </b>
+        <%for (int i = 1; i <= 5; i++){ %>
+        <input type="radio" name="R" value="<%= i %>"> <%= i%>
+        <%}%>
     </div>
     <div class="input-field" onclick="return validate()">
         <input type="submit" value="Проверить точку">
