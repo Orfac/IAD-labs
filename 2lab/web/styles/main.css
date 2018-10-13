@@ -1,7 +1,6 @@
-
 header
 {
-  font-size: 10pt;
+    font-size: 10pt;
     font-family: Sans-Serif, serif;
 }
 li
@@ -11,8 +10,6 @@ li
 
 .image img
 {
-
-    
     border-width: 10px 5px 5px 5px;
     display: block;
     margin: auto;
