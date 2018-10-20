@@ -24,11 +24,6 @@ function validate() {
         return false;
     }
 }
-
-function isInt(value) {
-    return parseInt(value, 10) === value;
-}
-
 function setX(button) {
     if (button != null) {
         var buttonValue = Number(button.value);
