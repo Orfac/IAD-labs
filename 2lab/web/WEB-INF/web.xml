@@ -7,14 +7,14 @@
         <servlet-name>ControllerServlet</servlet-name>
         <servlet-class>ControllerServlet</servlet-class>
     </servlet>
-    <servlet-mapping>
-        <servlet-name>ControllerServlet</servlet-name>
-        <url-pattern>/</url-pattern>
-    </servlet-mapping>
     <servlet>
         <servlet-name>AreaCheckServlet</servlet-name>
         <servlet-class>AreaCheckServlet</servlet-class>
     </servlet>
+    <servlet-mapping>
+        <servlet-name>ControllerServlet</servlet-name>
+        <url-pattern>/index.html</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AreaCheckServlet</servlet-name>
         <url-pattern>/check</url-pattern>
