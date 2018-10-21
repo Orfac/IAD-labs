@@ -1,26 +1,24 @@
 function validate() {
-    var x = document.getElementById("x-value").innerText;
-    var y = document.forms["params"]["Y"].value;
-    var r = document.forms["params"]["R"].value;
+    let x = document.getElementById("x-value").innerText;
+    let y = document.forms["params"]["Y"].value;
+    let r = document.forms["params"]["R"].value;
 
-    var isCorrect = true;
-    var errorMessage = "";
+    let isCorrect = true;
+    let errorMessage = "";
     if (x === "") {
-        isCorrect = false;
         errorMessage += "Неккоректно задано значение X\n";
+        isCorrect = false;
     }
     if (y === "" || isNaN(y) || y <= "-5" || y >= "3") {
         errorMessage += "Некорректно задано значение Y\n";
         isCorrect = false;
     }
-    if (r === "" || isNaN(r) || y <= "2" || r >= "5") {
-        errorMessage += "Некорректно задано значение R";
+    if (r === "") {
+        errorMessage += "Неккоректно задано значение R\n";
         isCorrect = false;
     }
-    if (isCorrect) {
-        return true;
-    } else {
+    if (!isCorrect) {
         alert(errorMessage);
-        return false;
     }
+    return isCorrect;
 }
