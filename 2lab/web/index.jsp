@@ -18,38 +18,38 @@
         </ul>
     </div>
 </header>
-<div class="image">
+<div class="main-content">
+<div class="main-content-elem">
     <canvas id="plot" width="300" height="300"></canvas>
 </div>
-<br>
-<form id="params" method="post">
-    <div class="input-field">
-        <ul id="x-label">
-            <li><b> X: </b></li>
-            <li id="x-value"></li>
-        </ul>
-        <br>
-        <%for (int i = -5; i <= 3; i++) { %>
-        <input type="button" name="X" value="<%= i %>" onclick="setX(this)">
-        <%}%>
+<div class="main-content-elem">
+    <form id="params" method="post" action="check">
+        <div class="input-field">
+            <div id="x-label">
+               <div> <b> X: </b></div>
+                <div id="x-value"></div>
+            </div>
+            <%for (int i = -5; i <= 3; i++) { %>
+            <input type="button" name="X" value="<%= i %>" onclick="setX(this)">
+            <%}%>
 
-    </div>
-    <div class="input-field">
-        <b> Y: </b>
-        <br>
-        <input type="text" name="Y" placeholder="(-5 .. 3)">
-    </div>
-    <div class="input-field">
-        <b>R: </b>
-        <br>
-        <%for (int i = 1; i <= 5; i++){ %>
-        <input type="radio" name="R" value="<%= i %>"> <%= i%>
-        <%}%>
-    </div>
-    <div class="input-field" onclick="return validate()">
-        <input type="submit" value="Проверить точку">
-    </div>
-</form>
+        </div>
+        <div class="input-field">
+            <b> Y: </b>
+            <input type="text" name="Y" placeholder="(-5 .. 3)">
+        </div>
+        <div class="input-field">
+            <b>R: </b>
+            <%for (int i = 1; i <= 5; i++){ %>
+            <input type="radio" name="R" value="<%= i %>"> <%= i%>
+            <%}%>
+        </div>
+        <div class="input-field" onclick="return validate()">
+            <input type="submit" value="Проверить точку">
+        </div>
+    </form>
+</div>
+</div>
 </body>
 <script src="${pageContext.request.contextPath}/scripts/init.js" type="text/javascript"></script>
 </html>

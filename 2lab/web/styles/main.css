@@ -3,20 +3,12 @@ header
     font-size: 10pt;
     font-family: Sans-Serif, serif;
 }
-li
-{
-    font-weight: bold;
-}
 
 .input-field
 {
     padding: 5px 10px;
     margin-top: 20px;
     text-align: center;
-}
-
-#x-label li {
-    display: inline;
 }
 
 #plot {
@@ -26,4 +18,17 @@ li
     margin-right: auto;
     display: block;
     border: 1px solid #000000;
+}
+
+.main-content{
+    width: 50%;
+    margin: 0 auto;
+}
+
+.main-content-elem {
+    display: inline-block;
+}
+
+div #x-label {
+    display: inline;
 }
