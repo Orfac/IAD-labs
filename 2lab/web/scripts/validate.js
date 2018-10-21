@@ -24,10 +24,3 @@ function validate() {
         return false;
     }
 }
-function setX(button) {
-    if (button != null) {
-        var buttonValue = Number(button.value);
-        if (!isNaN(buttonValue) && buttonValue >= -5 && buttonValue <= 3)
-            document.getElementById("x-value").innerText = button.value;
-    }
-}

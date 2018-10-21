@@ -2,24 +2,24 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title> Вариант 52545659</title>
+    <title> Лабораторная №2</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/main.css">
-    <script src="${pageContext.request.contextPath}/scripts/main.js" type="text/javascript"></script>
+    <script src="${pageContext.request.contextPath}/scripts/validate.js" type="text/javascript"></script>
+    <script src="${pageContext.request.contextPath}/scripts/listeners.js" type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/scripts/draw.js" type="text/javascript"></script>
 </head>
 <body>
 <header>
     <div>
         <ul>
-            <li> <% request.getContextPath();%>
             <li>Группа P3217
             <li>Молодецкий Арсений
-            <li>Вариант 28710
+            <li>Вариант 52545659
         </ul>
     </div>
 </header>
 <div class="image">
-    <canvas id="plot" width="200" height="100" style="border:1px solid #d3d3d3;"></canvas>
+    <canvas id="plot" width="300" height="300"></canvas>
 </div>
 <br>
 <form id="params" method="post">
@@ -51,4 +51,5 @@
     </div>
 </form>
 </body>
+<script src="${pageContext.request.contextPath}/scripts/init.js" type="text/javascript"></script>
 </html>
