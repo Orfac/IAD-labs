@@ -68,7 +68,7 @@ function draw_warning(message){
     plot_context.closePath();
 }
 
-function draw_point(){
+function draw_point(x,y){
     plot_context.beginPath();
     plot_context.arc(x, y, 3, 0, 2 * Math.PI);
     plot_context.fillStyle = "red";

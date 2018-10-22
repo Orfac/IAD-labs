@@ -16,9 +16,13 @@ function initRListener(){
 
 function setX(button) {
     if (button != null) {
-        var buttonValue = Number(button.value);
-        if (!isNaN(buttonValue) && buttonValue >= -5 && buttonValue <= 3)
-            document.getElementById("x-value").innerText = button.value;
+        let buttonValue = Number(button.value);
+        console.log(button.value);
+        if (!isNaN(buttonValue) && buttonValue >= -5 && buttonValue <= 3){
+            document.getElementsByName("X")[0].value = button.value;
+            console.log("updated");
+        }
+
     }
 }
 
@@ -33,7 +37,7 @@ function onPlotClick(e) {
         isWarningShown = false;
         draw_plot(plot_canvas,plot_context);
         getCursorPosition(e);
-        draw_point();
+        draw_point(x,y);
         x -= 150;
         x = x/100*R;
 

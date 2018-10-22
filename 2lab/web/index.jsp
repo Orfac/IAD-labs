@@ -23,14 +23,12 @@
     <canvas id="plot" width="300" height="300"></canvas>
 </div>
 <div class="main-content-elem">
-    <form id="params" method="post" action="check">
+    <form id="params" method="post" action="control">
         <div class="input-field">
-            <div id="x-label">
-               <div> <b> X: </b></div>
-                <div id="x-value"></div>
-            </div>
+            <b>X:</b>
+            <input class="x-value" type="text"  name="X" width="30px" value="">
             <%for (int i = -5; i <= 3; i++) { %>
-            <input type="button" name="X" value="<%= i %>" onclick="setX(this)">
+            <input type="button" value="<%= i %>" onclick="setX(this)">
             <%}%>
 
         </div>

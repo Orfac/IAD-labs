@@ -14,7 +14,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>ControllerServlet</servlet-name>
-        <url-pattern>/index.html</url-pattern>
+        <url-pattern>/control</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AreaCheckServlet</servlet-name>

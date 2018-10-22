@@ -14,17 +14,15 @@ public class ControllerServlet extends HttpServlet {
         Map<String,String[]> parameters = request.getParameterMap();
         ServletContext context = request.getServletContext();
 
-        if (parameters.containsKey("x") &&
-                parameters.containsKey("y") &&
-                parameters.containsKey("r")) {
+        if (parameters.containsKey("X") &&
+                parameters.containsKey("Y") &&
+                parameters.containsKey("R")) {
 
-            context.getRequestDispatcher("/check")
-                    .forward(request, response);
+            context.getRequestDispatcher("/check").forward(request, response);
             return;
         }
 
-        context.getRequestDispatcher("/index.jsp")
-                .forward(request, response);
+        context.getRequestDispatcher("/index.jsp").forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
