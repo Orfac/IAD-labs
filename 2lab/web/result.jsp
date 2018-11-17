@@ -5,7 +5,8 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Results</title>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/result.css">
 </head>
 <body>
 <table class='points'>

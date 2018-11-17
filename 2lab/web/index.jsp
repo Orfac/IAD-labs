@@ -53,10 +53,5 @@
 </div>
 </body>
 <script src="${pageContext.request.contextPath}/scripts/init.js" type="text/javascript"></script>
-<script> <% Object pointsObject = pageContext.getServletContext().getAttribute("points");
-             List<Point> points = (ArrayList<Point>) pointsObject; %>
-          <% for (Point point : points) {%>
 
-            <%}%>
-</script>
 </html>
