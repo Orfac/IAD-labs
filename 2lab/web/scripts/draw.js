@@ -75,3 +75,15 @@ function draw_point(x,y){
     plot_context.fill();
     plot_context.closePath();
 }
+
+// todo Доделать скрипт с переотрисовкой точек, проблема с радиусом
+function redraw_point(x,y,isHitted) {
+    x -= 150;
+    x = x/100*R;
+
+    x = x * 100 / r;
+    y -= 150;
+    y *= -1;
+    y = y/100*R;
+
+}
