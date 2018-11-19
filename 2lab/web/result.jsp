@@ -6,7 +6,7 @@
 <html>
 <head>
     <title>Results</title>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/result.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/styles/result.css">
 </head>
 <body>
 <table class='points'>
@@ -21,9 +21,11 @@
         <td><%=point.x %></td>
         <td><%=point.y %></td>
         <td><%=point.R %></td>
-        <td><% if (point.isMatched) {%>
+        <% if (point.isMatched) {%>
+        <td class="matched-cell">
             <%="Yes"%>
             <%} else {%>
+        <td class="unmatched-cell">
             <%="No"%>
             <%}%>
         </td>

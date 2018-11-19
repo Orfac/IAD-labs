@@ -26,8 +26,9 @@ function setX(button) {
     }
 }
 
+var xhttp;
+
 function onPlotClick(e) {
-    //$('#results1').hide();
     if(R == '-1') {
         if (!isWarningShown){
             isWarningShown = true;
@@ -35,15 +36,25 @@ function onPlotClick(e) {
         }
     } else {
         isWarningShown = false;
-        draw_plot(plot_canvas,plot_context);
+        clean_warning("R не задано");
         getCursorPosition(e);
-        draw_point(x,y);
+        let graphX = x;
+        let graphY = y;
+
         x -= 150;
         x = x/100*R;
 
         y -= 150;
         y *= -1;
         y = y/100*R;
+
+        $.ajax({
+            type: 'POST',
+            url: "control",
+            data: { 'X': x, 'Y': y, 'R': R},
+            success: function (data) { draw_point(graphX,graphY); },
+            error: function (a, jqXHR, exception) { }
+        });
 
         console.log(x);
         console.log(y);

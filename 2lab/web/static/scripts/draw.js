@@ -68,6 +68,15 @@ function draw_warning(message){
     plot_context.closePath();
 }
 
+function clean_warning(message) {
+    plot_context.beginPath();
+    plot_context.font = "15px Comic Sans MS";
+    plot_context.fillStyle = "white";
+    plot_context.textAlign = "center";
+    plot_context.fillText(message, 150, 285);
+    plot_context.closePath();
+}
+
 function draw_point(x,y){
     plot_context.beginPath();
     plot_context.arc(x, y, 3, 0, 2 * Math.PI);
