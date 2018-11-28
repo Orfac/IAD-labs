@@ -34,6 +34,7 @@ public class AreaCheckServlet extends HttpServlet {
         points.add(point);
 
         context.setAttribute("points",points);
+
         context.getRequestDispatcher("/result.jsp").forward(request, response);
     }
 

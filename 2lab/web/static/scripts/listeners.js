@@ -51,14 +51,17 @@ function onPlotClick(e) {
         $.ajax({
             type: 'POST',
             url: "control",
-            data: { 'X': x, 'Y': y, 'R': R},
-            success: function (data) { draw_point(graphX,graphY); },
+            data: { 'X': x, 'Y': y, 'R': R, 'Aj': true},
+            success: function (data,textStatus, xhr) { draw_point(graphX,graphY); console.log(xhr.status); },
             error: function (a, jqXHR, exception) { }
         });
 
         console.log(x);
         console.log(y);
     }
+}
+function dr() {
+    
 }
 function getCursorPosition(e) {
     if (e.pageX !== undefined && e.pageY !== undefined) {
