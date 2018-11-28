@@ -17,8 +17,8 @@ public class ControlFilter implements Filter {
         String rest = uri.substring(uriParts[0].length());
 
 
-        if(path.equals("/2lab_war_exploded/check")) {
-            response.sendRedirect("/control");
+        if(path.equals("/2lab_war/check")) {
+            response.sendRedirect("/2lab_war/control");
         } else {
             chain.doFilter(request, response);
         }

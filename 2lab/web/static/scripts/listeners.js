@@ -51,8 +51,8 @@ function onPlotClick(e) {
         $.ajax({
             type: 'POST',
             url: "control",
-            data: { 'X': x, 'Y': y, 'R': R, 'Aj': true},
-            success: function (data,textStatus, xhr) { draw_point(graphX,graphY); console.log(xhr.status); },
+            data: { 'X': x, 'Y': y, 'R': R, 'IsAjax': true},
+            success: function (data,textStatus, xhr) { ajaxOnSucess(data,textStatus, xhr, graphX, graphY) },
             error: function (a, jqXHR, exception) { }
         });
 
@@ -60,8 +60,13 @@ function onPlotClick(e) {
         console.log(y);
     }
 }
-function dr() {
-    
+function ajaxOnSucess(data,textStatus, xhr, graphX, graphY) {
+    if (data === "1"){
+        draw_point(graphX,graphY,"green");
+    } else {
+        draw_point(graphX,graphY,"red")
+    }
+
 }
 function getCursorPosition(e) {
     if (e.pageX !== undefined && e.pageY !== undefined) {
