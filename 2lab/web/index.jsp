@@ -51,7 +51,36 @@
       </div>
     </form>
   </div>
+
 </div>
+<table class='points'>
+    <tr>
+        <td>X coordinate</td><td>Y coordinate</td><td>Radius</td><td>Entrance</td>
+    </tr>
+    <%
+        Object pointsObject = pageContext.getServletContext().getAttribute("points");
+        if(pointsObject != null){
+            List<Point> points = (ArrayList<Point>) pointsObject;
+
+            for (Point point : points) {%>
+    <tr>
+        <td><%=point.x %></td>
+        <td><%=point.y %></td>
+        <td><%=point.R %></td>
+        <% if (point.isMatched) {%>
+        <td class="matched-cell">
+                <%="Yes"%>
+                <%} else {%>
+        <td class="unmatched-cell">
+            <%="No"%>
+            <%}%>
+        </td>
+    </tr>
+    <%}%>
+    <%}%>
+
+
+</table>
 </body>
 <script src="${pageContext.request.contextPath}/static/scripts/init.js" type="text/javascript"></script>
 

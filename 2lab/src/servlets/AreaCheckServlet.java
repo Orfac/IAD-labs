@@ -42,7 +42,7 @@ public class AreaCheckServlet extends HttpServlet {
         points.add(point);
 
         context.setAttribute("points", points);
-
+        context.setAttribute("point",point);
 
         String isAjax = request.getParameter("IsAjax");
         if (isAjax == null)

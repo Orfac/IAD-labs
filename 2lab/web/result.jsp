@@ -13,10 +13,9 @@
     <tr>
         <td>X coordinate</td><td>Y coordinate</td><td>Radius</td><td>Entrance</td>
     </tr>
-    <%  Object pointsObject = pageContext.getServletContext().getAttribute("points");
-        List<Point> points = (ArrayList<Point>) pointsObject;
-
-        for (Point point : points) {%>
+    <%
+        Object pointObject = pageContext.getServletContext().getAttribute("point");
+        Point point = (Point) pointObject;%>
     <tr>
         <td><%=point.x %></td>
         <td><%=point.y %></td>
@@ -30,7 +29,6 @@
             <%}%>
         </td>
     </tr>
-        <%}%>
 
 
 </table>
