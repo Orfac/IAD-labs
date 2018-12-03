@@ -12,19 +12,19 @@
     padding-top: 10px;
 }
 
+
 td
 {
-    border: 2px solid #000000;
     text-align: center;
     margin: auto;
 }
 
 .matched-cell
 {
-    border-color: lightgreen;
+    background-color: lightgreen;
 }
 
 .unmatched-cell
 {
-    border-color: crimson;
+    background-color: crimson;
 }

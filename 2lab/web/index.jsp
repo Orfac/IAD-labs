@@ -53,7 +53,7 @@
   </div>
 
 </div>
-<table class='points'>
+<table class='points' cellpadding="7" border="2">
     <tr>
         <td>X coordinate</td><td>Y coordinate</td><td>Radius</td><td>Entrance</td>
     </tr>

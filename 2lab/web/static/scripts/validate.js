@@ -10,7 +10,7 @@ function validate() {
         isCorrect = false;
     }
     document.forms["params"]["X"].value = x;
-    if (y === "" || isNaN(y) || y < -5 || y > 3) {
+    if (y === "" || isNaN(y) || y <= -5 || y >= 3) {
         errorMessage += "Некорректно задано значение Y\n";
         isCorrect = false;
     }
