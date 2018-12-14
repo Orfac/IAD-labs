@@ -51,8 +51,4 @@ public class AreaCheckServlet extends HttpServlet {
             response.getWriter().print(point.isMatched ? 1 : 0);
         }
     }
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
 }
