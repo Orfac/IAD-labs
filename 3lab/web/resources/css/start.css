@@ -1,0 +1,15 @@
+.header{
+    position: fixed;
+    top: auto;
+    right: 10px;
+}
+
+.main-elem{
+    margin: auto;
+    text-align: center;
+}
+
+body{
+    text-align: center;
+    font-family: sans-serif;
+}
