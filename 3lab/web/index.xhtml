@@ -5,49 +5,50 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-   <f:view>
-       <h:head>
-           <title > Лабораторная работа №3 </title>
+<f:view>
+    <h:head>
+        <title> Лабораторная работа №3 </title>
+        <h:outputScript name="js/time.js" target="body"/>
+        <h:outputStylesheet name="css/start.css"/>
+    </h:head>
+    <h:body>
+        <div class="header"> Молодецкий Арсений группа p3217 вариант <strong>1488</strong></div>
 
-           <h:outputScript name="js/time.js" target="body" />
-           <h:outputStylesheet name="css/start.css" />
-       </h:head>
-       <h:body>
-           <div class="header"> Молодецкий Арсений группа p3217 вариант <strong>1488</strong> </div>
+        <div id="clock">
+            <div class="time-component">
+                <span id='year'>2018</span>
+                <div class="small-text">Year</div>
+            </div>
+            <div class="time-component">
+                <span id="month">11</span>
+                <div class="small-text">Month</div>
+            </div>
+            <div class="time-component">
+                <span id="day">13</span>
+                <div class="small-text">Days</div>
+            </div>
+            <div class="time-component">
+                <span id="hours">23</span>
+                <div class="small-text">Hours</div>
+            </div>
+            <div class="time-component">
+                <span id="minutes">59</span>
+                <div class="small-text">Minutes</div>
+            </div>
+            <div class="time-component">
+                <span id="seconds">09</span>
+                <div class="small-text">Seconds</div>
+            </div>
+        </div>
 
-           <div id="clock">
-               <div class="time-component">
-                   <span id='year'>2018</span>
-                   <div class="small-text">Year</div>
-               </div>
-               <div class="time-component">
-                   <span id="month">11</span>
-                   <div class="small-text">Month</div>
-               </div>
-               <div class="time-component">
-                   <span id="day">13</span>
-                   <div class="small-text">Days</div>
-               </div>
-               <div class="time-component">
-                   <span id="hours">23</span>
-                   <div class="small-text">Hours</div>
-               </div>
-               <div class="time-component">
-                   <span id="minutes">59</span>
-                   <div class="small-text">Minutes</div>
-               </div>
-               <div class="time-component">
-                   <span id="seconds">09</span>
-                   <div class="small-text">Seconds</div>
-               </div>
-           </div>
-
-           <div class="main-elem" id="link"> </div>
-            <div class="footerClass">
+        <div class="main-elem" id="link"></div>
+        <div class="footerClass">
+            <div class="link-to-main">
                 <a href="main.xhtml">
-                Перейти на главную страницу
+                    Перейти на главную страницу
                 </a>
             </div>
-       </h:body>
-   </f:view>
+        </div>
+    </h:body>
+</f:view>
 </html>
