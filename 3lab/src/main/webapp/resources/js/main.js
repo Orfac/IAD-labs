@@ -1,12 +1,19 @@
+var plot_canvas;
+var plot_context;
+var x;
+var y;
+var r;
+var r_radio_button;
+var isWarningShown;
 function init() {
-    var plot_canvas = document.getElementById("plot");
-    var plot_context = plot_canvas.getContext("2d");
-    var r_radio_button = document.getElementsByName("R");
+    plot_canvas = document.getElementById("plot");
+    plot_context = plot_canvas.getContext("2d");
+    r_radio_button = document.getElementsByName("R");
     draw_plot(plot_canvas,plot_context);
-    var x;
-    var y;
-    var R = '-1';
-    var isWarningShown = false;
-    initRListener();
+    x;
+    y;
+    r = '-1';
+    isWarningShown = false;
+    initrListener();
     plot_canvas.addEventListener("click", onPlotClick, false);
 }

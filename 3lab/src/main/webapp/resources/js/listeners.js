@@ -1,16 +1,16 @@
-function changeR() {
-    R = getR();
+function changer() {
+    r = getr();
 }
 
-function getR(){
+function getr(){
     for (let i = 0, length = r_radio_button.length; i < length; i++){
         if (r_radio_button[i].checked) return r_radio_button[i].value;
     }
 }
 
-function initRListener(){
+function initrListener(){
     for (let i = 0; i < r_radio_button.length; i++) {
-        r_radio_button[i].addEventListener("click", changeR, false);
+        r_radio_button[i].addEventListener("click", changer, false);
     }
 }
 
@@ -29,30 +29,30 @@ function setX(button) {
 var xhttp;
 
 function onPlotClick(e) {
-    if(R == '-1') {
+    if(r == '-1') {
         if (!isWarningShown){
             isWarningShown = true;
-            draw_warning("R не задано");
+            draw_warning("r не задано");
         }
     } else {
         isWarningShown = false;
-        clean_warning("R не задано");
+        clean_warning("r не задано");
         getCursorPosition(e);
         let graphX = x;
         let graphY = y;
 
         x -= 150;
-        x = x/100*R;
+        x = x/100*r;
 
         y -= 150;
         y *= -1;
-        y = y/100*R;
+        y = y/100*r;
 
         $.ajax({
             type: 'POST',
             url: "control",
-            data: { 'X': x, 'Y': y, 'R': R, 'IsAjax': true},
-            success: function (data,textStatus, xhr) { ajaxOnSucess(data,textStatus, xhr, graphX, graphY) },
+            data: { 'X': x, 'Y': y, 'r': r, 'IsAjax': true},
+            success: function (data,textStatus, xhR) { ajaxOnSucess(data,textStatus, xhR, graphX, graphY) },
             error: function (a, jqXHR, exception) { }
         });
 
@@ -60,7 +60,7 @@ function onPlotClick(e) {
         console.log(y);
     }
 }
-function ajaxOnSucess(data,textStatus, xhr, graphX, graphY) {
+function ajaxOnSucess(data,textStatus, xhR, graphX, graphY) {
     if (data === "1"){
         draw_point(graphX,graphY,"green");
     } else {

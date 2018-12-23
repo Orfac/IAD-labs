@@ -10,20 +10,22 @@
     <h:outputScript name="js/main.js" target="body"/>
     <h:outputScript name="js/draw.js" target="body"/>
     <h:outputScript name="js/listeners.js" target="body"/>
+    <h:outputScript src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"/>
     <h:outputStylesheet name="css/main.css"/>
 </h:head>
 <h:body onload="init()">
     <div class="container">
         <h2>Проверка попадания точки</h2>
         <ui:include src="graph.html"/>
-        <h:form>
+        <h:form action="#{main.AddNewPoint}" method="GET">
             <div class="value">
                 <div class="value-container">
                     <div class="value-label">X</div>
-                    <ui:repeat value="#{util.getYield(6)}" var="o" varStatus="status">
+                    <ui:repeat value="#{main.xValues}" var="xValue" varStatus="status">
                         <div class="value-elem">
                             <div class="value-elem-label">#{main.getConvertedXValue(status.index)}</div>
-                            <h:selectBooleanCheckbox/>
+                            <h:selectBooleanCheckbox value="#{xValue}" onchange="#{main.updateX(main.xValues)}">
+                            </h:selectBooleanCheckbox>
                         </div>
                     </ui:repeat>
                 </div>
@@ -43,13 +45,13 @@
                     <ui:repeat value="#{util.getYield(5)}" var="o" varStatus="status">
                         <div class="value-elem">
                             <div class="value-elem-label">#{status.index + 1}</div>
-                            <h:commandButton styleClass="button" value="#{status.index}" type="button"/>
+                            <h:commandButton styleClass="button"  type="button"/>
                         </div>
                     </ui:repeat>
                 </div>
             </div>
             <div class="value">
-                <h:commandButton styleClass="button" value="Проверить точку" type="submit" />
+                <h:commandButton styleClass="button" value="Проверить точку" type="submit"/>
             </div>
         </h:form>
     </div>

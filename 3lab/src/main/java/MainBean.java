@@ -6,39 +6,17 @@ import java.io.Serializable;
 public class MainBean implements Serializable {
 
 
-    public static boolean[] xValues;
-
+    private Boolean[] xValues;
     private String yValue;
     private Point point;
 
     public MainBean(){
         point = null;
-        xValues = new boolean[6];
-        xValues[0] = true;
+        xValues = new Boolean[6];
+        for (int i = 0; i < 6; i++) {
+            xValues[i] = Boolean.FALSE;
+        }
         yValue = "1,52";
-    }
-
-
-
-    public boolean getXValue(int index){
-        if (index < xValues.length && index > -1){
-            return xValues[index];
-        }
-        return false;
-    }
-
-    public double convertValue(){
-        int selectedNumber = -1;
-        for (int i = 0; i < xValues.length; i++) {
-            if (xValues[i]){
-                selectedNumber = i;
-                break;
-            }
-        }
-
-        double startXValue = -2;
-        double coeffXValue = 0.5;
-        return startXValue + coeffXValue *selectedNumber;
     }
 
     public double getConvertedXValue(int number){
@@ -47,11 +25,35 @@ public class MainBean implements Serializable {
         return startXValue + coeffXValue *number;
     }
 
-    public void update(int num){
-        xValues[num] = !xValues[num];
-    }
-
     public String getYValue() {
         return yValue;
+    }
+
+    public void setYValue(String value){
+        this.yValue = value;
+    }
+
+    public Boolean getX(int index) {
+        return xValues[index];
+    }
+
+    public void updateX(Boolean[] xValues){
+        int a = 0;
+        int b = 0;
+    }
+
+    public Boolean[] getxValues() {
+        return xValues;
+    }
+
+    public void setxValues(Boolean[] xValues) {
+        this.xValues = xValues;
+    }
+
+
+    public void AddNewPoint() {
+       int a;
+       int b;
+       a = 0;
     }
 }
