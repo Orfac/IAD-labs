@@ -14,16 +14,8 @@ function initrListener(){
     }
 }
 
-function setX(button) {
-    if (button != null) {
-        let buttonValue = Number(button.value);
-        console.log(button.value);
-        if (!isNaN(buttonValue) && buttonValue >= -5 && buttonValue <= 3){
-            document.getElementsByName("X")[0].value = button.value;
-            console.log("updated");
-        }
-
-    }
+function updateX(xBox) {
+    let b = document.getElementById('xValues');
 }
 
 var xhttp;

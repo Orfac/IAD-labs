@@ -19,12 +19,12 @@
         <ui:include src="graph.html"/>
         <h:form action="#{main.AddNewPoint}" method="GET">
             <div class="value">
-                <div class="value-container">
+                <div class="value-container" id="xValues">
                     <div class="value-label">X</div>
                     <ui:repeat value="#{main.xValues}" var="xValue" varStatus="status">
                         <div class="value-elem">
                             <div class="value-elem-label">#{main.getConvertedXValue(status.index)}</div>
-                            <h:selectBooleanCheckbox value="#{xValue}" onchange="#{main.updateX(main.xValues)}">
+                            <h:selectBooleanCheckbox value="#{xValue}" valueChangeListener="#{main.updateX}" onclick="updateX(this)">
                             </h:selectBooleanCheckbox>
                         </div>
                     </ui:repeat>

@@ -1,5 +1,8 @@
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import model.Point;
 
+import javax.faces.component.html.HtmlSelectBooleanCheckbox;
+import javax.faces.event.ValueChangeEvent;
 import java.io.Serializable;
 
 
@@ -9,6 +12,7 @@ public class MainBean implements Serializable {
     private Boolean[] xValues;
     private String yValue;
     private Point point;
+
 
     public MainBean(){
         point = null;
@@ -37,9 +41,10 @@ public class MainBean implements Serializable {
         return xValues[index];
     }
 
-    public void updateX(Boolean[] xValues){
-        int a = 0;
-        int b = 0;
+    public void updateX(ValueChangeEvent e){
+        HtmlSelectBooleanCheckbox box = (HtmlSelectBooleanCheckbox)e.getSource();
+        int index = Integer.parseInt(String.valueOf(box.getClientId().getBytes()[16])) - 48;
+        xValues[index] = !xValues[index];
     }
 
     public Boolean[] getxValues() {
