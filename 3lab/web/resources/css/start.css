@@ -48,7 +48,7 @@ body{
 }
 
 a:link, a:visited {
-    background-color: #c3d7f8;
+    background-color: #8A9FD5;
     color: white;
     padding: 14px 25px;
     text-align: center;
@@ -57,5 +57,5 @@ a:link, a:visited {
 }
 
 a:hover, a:active {
-    background-color: #8A9FD5;
+    background-color: #264D9B;
 }
