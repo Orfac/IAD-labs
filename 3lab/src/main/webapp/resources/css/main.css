@@ -1,3 +1,53 @@
-{
+.container{
+    padding: 5px;
+    text-align: center;
+}
 
+.graph-elem{
+    border: 2px solid #1c2f5e;
+}
+
+.value{
+    text-align: center;
+    vertical-align: center;
+    margin: auto;
+    background-color: #B9C9ED;
+    padding: 5px 10px;
+    border: 2px solid #1c2f5e;
+    width: 30%;
+}
+
+.value-container{
+    display: flex;
+}
+
+.value-elem{
+    background-color: #B9C9ED;
+    margin:auto;
+    border: 1px solid #7f8fab;
+    padding: 5px 10px;
+    width: 100%;
+}
+
+.value-label{
+    margin-right: 5px;
+    font-family: "Times New Roman", sans-serif;
+    font-size: 20px;
+    background-color: #B9C9ED;
+    padding: 5px;
+    border: 1px solid #1c2f5e;
+}
+
+.button{
+    padding: 5px;
+    background-color: #8A9FD5;
+    width: 100%;
+}
+
+.button:hover{
+    background-color: #264D9B;
+}
+
+.text{
+    width: 100%;
 }

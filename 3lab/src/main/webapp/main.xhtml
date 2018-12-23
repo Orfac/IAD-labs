@@ -6,26 +6,52 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
-    <title> Главная </title>
+    <title> Главная страница</title>
     <h:outputScript name="js/main.js" target="body"/>
     <h:outputScript name="js/draw.js" target="body"/>
+    <h:outputScript name="js/listeners.js" target="body"/>
     <h:outputStylesheet name="css/main.css"/>
 </h:head>
 <h:body onload="init()">
-    <ui:include src="graph.html"/>
-    <div class="value">
-        <div class="value-label">X</div>
-        <ui:repeat value="#{util.getYield(6)}" var="o" varStatus="status">
-            <div class="x-value-elem">
-                <div class="x-value-elem-label">#{main.getConvertedXValue(status.index)}</div>
-                <h:selectBooleanCheckbox value="#{main.xValues[status.index]}"/>
+    <div class="container">
+        <h2>Проверка попадания точки</h2>
+        <ui:include src="graph.html"/>
+        <h:form>
+            <div class="value">
+                <div class="value-container">
+                    <div class="value-label">X</div>
+                    <ui:repeat value="#{util.getYield(6)}" var="o" varStatus="status">
+                        <div class="value-elem">
+                            <div class="value-elem-label">#{main.getConvertedXValue(status.index)}</div>
+                            <h:selectBooleanCheckbox/>
+                        </div>
+                    </ui:repeat>
+                </div>
             </div>
-        </ui:repeat>
-    </div>
-    <div class="value">
-        <div class="value-label">Y</div>
-        <h:inputText value="#{main.YValue}" > </h:inputText>
-    </div>
+            <div class="value">
+                <div class="value-container">
+                    <div class="value-label">Y</div>
+                    <div class="value-elem">
+                        <h:inputText styleClass="text" placeholder="(-5..5)" value="#{main.YValue}"> </h:inputText>
+                    </div>
+                </div>
 
+            </div>
+            <div class="value">
+                <div class="value-container">
+                    <div class="value-label">R</div>
+                    <ui:repeat value="#{util.getYield(5)}" var="o" varStatus="status">
+                        <div class="value-elem">
+                            <div class="value-elem-label">#{status.index + 1}</div>
+                            <h:commandButton styleClass="button" value="#{status.index}" type="button"/>
+                        </div>
+                    </ui:repeat>
+                </div>
+            </div>
+            <div class="value">
+                <h:commandButton styleClass="button" value="Проверить точку" type="submit" />
+            </div>
+        </h:form>
+    </div>
 </h:body>
 </html>
