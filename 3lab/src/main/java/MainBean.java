@@ -2,17 +2,20 @@ import model.Point;
 
 import java.io.Serializable;
 
-public class PointBean implements Serializable {
 
-    private boolean[] xValues;
+public class MainBean implements Serializable {
+
+
+    public static boolean[] xValues;
 
     private String yValue;
     private Point point;
 
-    public PointBean(){
+    public MainBean(){
         point = null;
         xValues = new boolean[6];
         xValues[0] = true;
+        yValue = "1,52";
     }
 
 
@@ -24,7 +27,7 @@ public class PointBean implements Serializable {
         return false;
     }
 
-    public double getConvertedXValue(){
+    public double convertValue(){
         int selectedNumber = -1;
         for (int i = 0; i < xValues.length; i++) {
             if (xValues[i]){
@@ -38,12 +41,17 @@ public class PointBean implements Serializable {
         return startXValue + coeffXValue *selectedNumber;
     }
 
-    public void update(int num){
-
+    public double getConvertedXValue(int number){
+        double startXValue = -2;
+        double coeffXValue = 0.5;
+        return startXValue + coeffXValue *number;
     }
 
+    public void update(int num){
+        xValues[num] = !xValues[num];
+    }
 
-    public boolean[] getXValues() {
-        return xValues;
+    public String getYValue() {
+        return yValue;
     }
 }

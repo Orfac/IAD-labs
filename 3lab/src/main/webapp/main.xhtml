@@ -2,18 +2,30 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-<h:body>
-    <f:view>
-        <h:outputLabel value="Hello, world"/>
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+    <title> Главная </title>
+    <h:outputScript name="js/main.js" target="body"/>
+    <h:outputScript name="js/draw.js" target="body"/>
+    <h:outputStylesheet name="css/main.css"/>
+</h:head>
+<h:body onload="init()">
+    <ui:include src="graph.html"/>
+    <div class="value">
+        <div class="value-label">X</div>
+        <ui:repeat value="#{util.getYield(6)}" var="o" varStatus="status">
+            <div class="x-value-elem">
+                <div class="x-value-elem-label">#{main.getConvertedXValue(status.index)}</div>
+                <h:selectBooleanCheckbox value="#{main.xValues[status.index]}"/>
+            </div>
+        </ui:repeat>
+    </div>
+    <div class="value">
+        <div class="value-label">Y</div>
+        <h:inputText value="#{main.YValue}" > </h:inputText>
+    </div>
 
-        <h:selectBooleanCheckbox value="#{PointBean.getXValue(0)}" label="X">
-
-        </h:selectBooleanCheckbox>
-
-
-    </f:view>
 </h:body>
 </html>

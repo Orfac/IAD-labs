@@ -11,4 +11,8 @@ public class Point {
         this.y = y;
         this.r = r;
     }
+
+    public String getCheckStatus(){
+        return isMatched ? "Yes" : "No";
+    }
 }
