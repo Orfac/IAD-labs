@@ -1,9 +1,17 @@
 package model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Point {
     public double x;
     public double y;
     public double r;
+    @Id @GeneratedValue
+    private int id;
+
 
     public boolean isMatched;
 
@@ -11,6 +19,9 @@ public class Point {
         this.x = x;
         this.y = y;
         this.r = r;
+    }
+
+    public Point() {
     }
 
     public double getX() {
@@ -43,5 +54,13 @@ public class Point {
 
     public void setIsMatched(boolean isMatched) {
         this.isMatched = isMatched;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

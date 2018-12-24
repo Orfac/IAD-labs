@@ -1,4 +1,3 @@
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import model.AreaChecker;
 import model.Point;
 
@@ -18,7 +17,7 @@ public class MainBean implements Serializable {
     private AreaChecker checker;
     private String response;
 
-    private PointEntityManager manager;
+    private EntityManagerCreator creator;
 
     public MainBean() {
         xValues = new Boolean[6];
@@ -29,7 +28,7 @@ public class MainBean implements Serializable {
         R = 1;
         checker = new AreaChecker();
         points = new ArrayList<Point>();
-        manager = new PointEntityManager();
+        creator = new EntityManagerCreator();
     }
 
     public double getConvertedXValue(int number) {
@@ -88,6 +87,12 @@ public class MainBean implements Serializable {
         Point point = new Point(XValue,Y,R);
         checker.Check(point);
         points.add(point);
+        try{
+            creator.getEntityManager().getTransaction().begin();
+            creator.getEntityManager().persist(point);
+            creator.getEntityManager().getTransaction().commit();
+        }
+        catch (Exception e){}
     }
 
     public void CheckHit(){
