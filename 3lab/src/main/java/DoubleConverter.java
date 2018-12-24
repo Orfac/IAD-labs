@@ -12,6 +12,12 @@ public class DoubleConverter implements Converter {
             throw new ConverterException(msg);
         }
 
+        if (stringValue.contains(",")) {
+            FacesMessage msg = new FacesMessage("Error converting double", "Invalid symbol, use dot instead of comma");
+            msg.setSeverity(FacesMessage.SEVERITY_ERROR);
+            throw new ConverterException(msg);
+        }
+
         double doubleValue;
         try {
             doubleValue = Double.parseDouble(stringValue);
