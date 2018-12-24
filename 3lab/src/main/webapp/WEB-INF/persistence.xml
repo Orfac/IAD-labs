@@ -8,7 +8,7 @@
             <property name="javax.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@127.0.0.1:1521:orbis"/>
             <property name="javax.persistence.jdbc.user" value="s242395"/>
-            <property name="javax.persistence.jdbc.password" value="vml086"/>
+            <property name="javax.persistence.jdbc.password" value=""/>
         </properties>
     </persistence-unit>
 </persistence>
