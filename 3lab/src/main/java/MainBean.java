@@ -11,11 +11,12 @@ import java.util.ArrayList;
 public class MainBean implements Serializable {
 
     private Boolean[] xValues;
+    private double XValue;
     private double Y;
-    private int R;
+    private double R;
     private ArrayList<Point> points;
-
     private AreaChecker checker;
+    private String response;
 
     public MainBean() {
         xValues = new Boolean[6];
@@ -67,14 +68,29 @@ public class MainBean implements Serializable {
         this.Y = value;
     }
 
-    public void setR(int R) {
+    public double getR() {
+        return R;
+    }
+
+    public void setR(double R) {
         this.R = R;
     }
 
+    public void Submit(){
+        XValue = this.getX();
+        AddNewPoint();
+    }
+
     public void AddNewPoint() {
-        Point point = new Point(this.getX(), Y,R);
+        Point point = new Point(XValue,Y,R);
         checker.Check(point);
         points.add(point);
+    }
+
+    public void CheckHit(){
+        AddNewPoint();
+        Point lastPoint = points.get(points.size()-1);
+        response = lastPoint.isMatched ? "1" : "0";
     }
 
 
@@ -84,5 +100,22 @@ public class MainBean implements Serializable {
 
     public void setPoints(ArrayList<Point> points) {
         this.points = points;
+    }
+
+
+    public double getXValue() {
+        return XValue;
+    }
+
+    public void setXValue(double xValue) {
+        this.XValue = xValue;
+    }
+
+    public String getResponse() {
+        return response;
+    }
+
+    public void setResponse(String response) {
+        this.response = response;
     }
 }

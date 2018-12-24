@@ -16,8 +16,19 @@
 <h:body onload="init()">
     <div class="container">
         <h2>Point hit checking</h2>
-        <h:inputHidden id="hiddenR"/>
+        <h:form>
+            <h:inputHidden id="hiddenX" value="#{main.XValue}"></h:inputHidden>
+            <h:inputHidden id="hiddenY"  value="#{main.y}"></h:inputHidden>
+            <h:inputHidden id="hiddenR"  value="#{main.r}"></h:inputHidden>
+            <h:outputLabel value="#{main.response}" style="display:none" id="output-ajax"> </h:outputLabel>
+            <h:commandButton style="display:none" type="button" id="ajax-button"
+                             action="#{main.CheckHit}">
+                <f:ajax execute="@form" render="output-ajax"/>
+            </h:commandButton>
+        </h:form>
+
         <ui:include src="graph.html"/>
+
         <h:form>
             <div class="value">
                 <div class="value-container" id="xValues">
@@ -86,7 +97,7 @@
             </div>
             <div class="value">
                 <h:commandButton styleClass="button" value="Проверить точку" type="submit"
-                                 action="#{main.AddNewPoint}"/>
+                                 action="#{main.Submit}"/>
             </div>
         </h:form>
         <h2> Previous checkings results </h2>

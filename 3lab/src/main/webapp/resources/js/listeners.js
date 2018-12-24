@@ -11,17 +11,15 @@ function updateX(xBox) {
     xBox.checked = true;
 }
 
-var xhttp;
-
 function onPlotClick(e) {
-    if(r === '-1') {
+    if(r === -1) {
         if (!isWarningShown){
             isWarningShown = true;
-            draw_warning("r не задано");
+            draw_warning("R не задано");
         }
     } else {
         isWarningShown = false;
-        clean_warning("r не задано");
+        clean_warning("R не задано");
         getCursorPosition(e);
         let graphX = x;
         let graphY = y;
@@ -33,9 +31,11 @@ function onPlotClick(e) {
         y *= -1;
         y = y/100*r;
 
-        document.forms["form"]["form:submit"].click();
-        console.log(x);
-        console.log(y);
+
+        document.getElementById("j_idt11:hiddenX").textContent = toString(x);
+        document.getElementById("j_idt11:hiddenY").textContent = toString(y);
+        document.getElementById("j_idt11:hiddenR").textContent = toString(r);
+        document.getElementById("j_idt11:ajax-button").click();
     }
 }
 

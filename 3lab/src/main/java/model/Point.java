@@ -7,7 +7,7 @@ public class Point {
 
     public boolean isMatched;
 
-    public Point(double x, double y, int r) {
+    public Point(double x, double y, double r) {
         this.x = x;
         this.y = y;
         this.r = r;
