@@ -1,6 +1,13 @@
 
 function setR(number) {
     r = number;
+    let plot_canvas = document.getElementById("plot");
+    let plot_context = plot_canvas.getContext("2d");
+    draw_plot(plot_canvas,plot_context);
+    isWarningShown = false;
+    for (let i = 0; i < points.length; i++) {
+        draw_point(points[i]["x"],points[i]["y"],points[i]["matched"]? "green": "red",true);
+    }
 }
 
 function updateX(xBox) {
@@ -26,6 +33,7 @@ function onPlotClick(e) {
         graphX = x;
         graphY = y;
 
+
         x -= 150;
         x = x/100*r;
 
@@ -45,11 +53,13 @@ function onPlotClick(e) {
 
 function onSuccess() {
     let checkResult = document.getElementById("j_idt11:output").textContent;
+    points.push({'x':x, 'y':y, 'matched':checkResult === "1"});
     if (checkResult === "1"){
         draw_point(graphX,graphY,"green");
     } else {
         draw_point(graphX,graphY,"red");
     }
+
 }
 
 function getCursorPosition(e) {
