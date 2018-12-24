@@ -9,9 +9,8 @@
         <managed-bean-class>MainBean</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
-    <managed-bean>
-        <managed-bean-name>util</managed-bean-name>
-        <managed-bean-class>UtilBean</managed-bean-class>
-        <managed-bean-scope>session</managed-bean-scope>
-    </managed-bean>
+    <converter>
+        <converter-id>DoubleConverter</converter-id>
+        <converter-class>DoubleConverter</converter-class>
+    </converter>
 </faces-config>

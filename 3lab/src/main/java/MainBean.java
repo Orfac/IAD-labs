@@ -9,38 +9,38 @@ import java.io.Serializable;
 public class MainBean implements Serializable {
 
     private Boolean[] xValues;
-    private String yValue;
+    private double Y;
     private int R;
 
-    public MainBean(){
+    public MainBean() {
         xValues = new Boolean[6];
         for (int i = 0; i < 6; i++) {
             xValues[i] = Boolean.FALSE;
         }
         xValues[0] = true;
-        yValue = "1,52";
+        Y = 1.52;
     }
 
-    public double getConvertedXValue(int number){
+    public double getConvertedXValue(int number) {
         double startXValue = -2;
         double coeffXValue = 0.5;
-        return startXValue + coeffXValue *number;
+        return startXValue + coeffXValue * number;
     }
 
-    public String getYValue() {
-        return yValue;
+    public double getY() {
+        return Y;
     }
 
-    public void setYValue(String value){
-        this.yValue = value;
+    public void setY(double value) {
+        this.Y = value;
     }
 
     public Boolean getX(int index) {
         return xValues[index];
     }
 
-    public void updateX(ValueChangeEvent e){
-        HtmlSelectBooleanCheckbox box = (HtmlSelectBooleanCheckbox)e.getSource();
+    public void updateX(ValueChangeEvent e) {
+        HtmlSelectBooleanCheckbox box = (HtmlSelectBooleanCheckbox) e.getSource();
         int index = Integer.parseInt(String.valueOf(box.getClientId().getBytes()[16])) - 48;
         xValues[index] = !xValues[index];
     }
@@ -54,7 +54,7 @@ public class MainBean implements Serializable {
     }
 
     public void AddNewPoint() {
-        Point point = new Point(1,2,3);
+        Point point = new Point(1, 2, 3);
         int a = 2;
     }
 

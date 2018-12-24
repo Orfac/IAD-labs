@@ -15,7 +15,7 @@
 </h:head>
 <h:body onload="init()">
     <div class="container">
-        <h2>Проверка попадания точки</h2>
+        <h2>Point hit checking</h2>
         <h:inputHidden id="hiddenR"/>
         <ui:include src="graph.html"/>
         <h:form>
@@ -25,7 +25,8 @@
                     <ui:repeat value="#{main.xValues}" var="xValue" varStatus="status">
                         <div class="value-elem">
                             <div class="value-elem-label">#{main.getConvertedXValue(status.index)}</div>
-                            <h:selectBooleanCheckbox styleClass="x-checkbox" value="#{xValue}" valueChangeListener="#{main.updateX}" onclick="updateX(this)">
+                            <h:selectBooleanCheckbox styleClass="x-checkbox" value="#{xValue}"
+                                                     valueChangeListener="#{main.updateX}" onclick="updateX(this)">
                             </h:selectBooleanCheckbox>
                         </div>
                     </ui:repeat>
@@ -35,8 +36,14 @@
                 <div class="value-container">
                     <div class="value-label">Y</div>
                     <div class="value-elem">
-                        <h:inputText styleClass="text" placeholder="(-5..5)" value="#{main.YValue}"> </h:inputText>
+                        <h:inputText label="Y" id="y-input" size="5" styleClass="text" placeholder="(-5..5)"
+                                     value="#{main.y}">
+                            <f:converter converterId="DoubleConverter"/>
+                            <f:validateDoubleRange minimum="-5" maximum="5"/>
+                        </h:inputText>
+
                     </div>
+                    <h:message for="y-input" style="color:red"/>
                 </div>
 
             </div>
@@ -69,11 +76,11 @@
                         </h:commandButton>
                     </div>
 
-
                 </div>
             </div>
             <div class="value">
-                <h:commandButton styleClass="button" value="Проверить точку" type="submit" action="#{main.AddNewPoint}"/>
+                <h:commandButton styleClass="button" value="Проверить точку" type="submit"
+                                 action="#{main.AddNewPoint}"/>
             </div>
         </h:form>
     </div>
