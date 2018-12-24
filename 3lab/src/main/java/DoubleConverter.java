@@ -13,7 +13,7 @@ public class DoubleConverter implements Converter {
         }
 
         if (stringValue.contains(",")) {
-            FacesMessage msg = new FacesMessage("Error converting double", "Invalid symbol, use dot instead of comma");
+            FacesMessage msg = new FacesMessage("Error converting double", "Invalid symbol, use dot (.) instead of comma (,)");
             msg.setSeverity(FacesMessage.SEVERITY_ERROR);
             throw new ConverterException(msg);
         }

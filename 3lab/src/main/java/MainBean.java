@@ -1,9 +1,11 @@
 import com.sun.org.apache.xpath.internal.operations.Bool;
+import model.AreaChecker;
 import model.Point;
 
 import javax.faces.component.html.HtmlSelectBooleanCheckbox;
 import javax.faces.event.ValueChangeEvent;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 
 public class MainBean implements Serializable {
@@ -11,6 +13,9 @@ public class MainBean implements Serializable {
     private Boolean[] xValues;
     private double Y;
     private int R;
+    private ArrayList<Point> points;
+
+    private AreaChecker checker;
 
     public MainBean() {
         xValues = new Boolean[6];
@@ -18,7 +23,9 @@ public class MainBean implements Serializable {
             xValues[i] = Boolean.FALSE;
         }
         xValues[0] = true;
-        Y = 1.52;
+        R = 1;
+        checker = new AreaChecker();
+        points = new ArrayList<Point>();
     }
 
     public double getConvertedXValue(int number) {
@@ -27,16 +34,23 @@ public class MainBean implements Serializable {
         return startXValue + coeffXValue * number;
     }
 
+    private double getX() {
+        int index = 0;
+        for (int i = 0; i < xValues.length; i++) {
+            if (xValues[i]){
+                index = i;
+                break;
+            }
+        }
+        return getConvertedXValue(index);
+    }
+
     public double getY() {
         return Y;
     }
 
     public void setY(double value) {
         this.Y = value;
-    }
-
-    public Boolean getX(int index) {
-        return xValues[index];
     }
 
     public void updateX(ValueChangeEvent e) {
@@ -53,12 +67,22 @@ public class MainBean implements Serializable {
         this.xValues = xValues;
     }
 
-    public void AddNewPoint() {
-        Point point = new Point(1, 2, 3);
-        int a = 2;
-    }
-
     public void setR(int R) {
         this.R = R;
+    }
+
+    public void AddNewPoint() {
+        Point point = new Point(this.getX(), Y,R);
+        checker.Check(point);
+        points.add(point);
+    }
+
+
+    public ArrayList<Point> getPoints() {
+        return points;
+    }
+
+    public void setPoints(ArrayList<Point> points) {
+        this.points = points;
     }
 }

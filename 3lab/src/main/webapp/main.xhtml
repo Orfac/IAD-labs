@@ -36,7 +36,7 @@
                 <div class="value-container">
                     <div class="value-label">Y</div>
                     <div class="value-elem">
-                        <h:inputText label="Y" id="y-input" size="5" styleClass="text" placeholder="(-5..5)"
+                        <h:inputText required="true" label="Y" id="y-input" size="5" styleClass="text" placeholder="(-5..5)"
                                      value="#{main.y}">
                             <f:converter converterId="DoubleConverter"/>
                             <f:validateDoubleRange minimum="-5" maximum="5"/>
@@ -83,6 +83,23 @@
                                  action="#{main.AddNewPoint}"/>
             </div>
         </h:form>
+
+        <div class="result-table">
+            <h:dataTable id="resultsTable" value="#{main.points}" var="result">
+                <h:column headerText="X">
+                    <h:outputText value="#{result.x}"/>
+                </h:column>
+                <h:column headerText="Y">
+                    <h:outputText value="#{result.y}"/>
+                </h:column>
+                <h:column headerText="R">
+                    <h:outputText value="#{result.r}"/>
+                </h:column>
+                <h:column headerText="Result">
+                    <h:outputText value="#{result.hit ? 'Yes' : 'No'}"/>
+                </h:column>
+            </h:dataTable>
+        </div>
     </div>
 </h:body>
 </html>
