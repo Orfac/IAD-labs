@@ -8,17 +8,17 @@ public class AreaChecker {
 
         boolean isInCircle = x >= 0 && y >= 0
                 && x * x + y * y < r * r;
-        if (isInCircle) {
+        if (!isInCircle) {
             boolean isInRectangle = x <= 0 && y <= 0 &&
                     Math.abs(x) < r && Math.abs(y) < r / 2;
-            if (isInRectangle) {
+            if (!isInRectangle) {
                 // check if is in triangle
                 point.isMatched = x >= 0 && y <= 0 && y >= 2 * x - r;
             } else {
-                point.isMatched = false;
+                point.isMatched = true;
             }
         } else {
-            point.isMatched = false;
+            point.isMatched = true;
         }
     }
 }

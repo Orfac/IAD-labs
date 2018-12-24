@@ -1,17 +1,6 @@
-function changer() {
-    r = getr();
-}
 
-function getr(){
-    for (let i = 0, length = r_radio_button.length; i < length; i++){
-        if (r_radio_button[i].checked) return r_radio_button[i].value;
-    }
-}
-
-function initrListener(){
-    for (let i = 0; i < r_radio_button.length; i++) {
-        r_radio_button[i].addEventListener("click", changer, false);
-    }
+function setR(number) {
+    r = number;
 }
 
 function updateX(xBox) {
@@ -25,7 +14,7 @@ function updateX(xBox) {
 var xhttp;
 
 function onPlotClick(e) {
-    if(r == '-1') {
+    if(r === '-1') {
         if (!isWarningShown){
             isWarningShown = true;
             draw_warning("r не задано");
@@ -44,26 +33,12 @@ function onPlotClick(e) {
         y *= -1;
         y = y/100*r;
 
-        $.ajax({
-            type: 'POST',
-            url: "control",
-            data: { 'X': x, 'Y': y, 'r': r, 'IsAjax': true},
-            success: function (data,textStatus, xhR) { ajaxOnSucess(data,textStatus, xhR, graphX, graphY) },
-            error: function (a, jqXHR, exception) { }
-        });
-
+        document.forms["form"]["form:submit"].click();
         console.log(x);
         console.log(y);
     }
 }
-function ajaxOnSucess(data,textStatus, xhR, graphX, graphY) {
-    if (data === "1"){
-        draw_point(graphX,graphY,"green");
-    } else {
-        draw_point(graphX,graphY,"red")
-    }
 
-}
 function getCursorPosition(e) {
     if (e.pageX !== undefined && e.pageY !== undefined) {
         x = e.pageX;

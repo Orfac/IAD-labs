@@ -45,14 +45,6 @@ public class MainBean implements Serializable {
         return getConvertedXValue(index);
     }
 
-    public double getY() {
-        return Y;
-    }
-
-    public void setY(double value) {
-        this.Y = value;
-    }
-
     public void updateX(ValueChangeEvent e) {
         HtmlSelectBooleanCheckbox box = (HtmlSelectBooleanCheckbox) e.getSource();
         int index = Integer.parseInt(String.valueOf(box.getClientId().getBytes()[16])) - 48;
@@ -65,6 +57,14 @@ public class MainBean implements Serializable {
 
     public void setxValues(Boolean[] xValues) {
         this.xValues = xValues;
+    }
+
+    public double getY() {
+        return Y;
+    }
+
+    public void setY(double value) {
+        this.Y = value;
     }
 
     public void setR(int R) {

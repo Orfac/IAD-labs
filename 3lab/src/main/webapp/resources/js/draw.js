@@ -60,22 +60,24 @@ function fill_white(canvas,context) {
     context.fillRect(0, 0, canvas.width, canvas.height);
 }
 
-function draw_warning(message){
+function draw_message(message,color) {
     plot_context.beginPath();
     plot_context.font = "15px Comic Sans MS";
-    plot_context.fillStyle = "red";
+    plot_context.fillStyle = color;
     plot_context.textAlign = "center";
     plot_context.fillText(message, 150, 285);
     plot_context.closePath();
 }
 
+function draw_warning(message){
+    draw_message(message,"red");
+}
+
 function clean_warning(message) {
-    plot_context.beginPath();
-    plot_context.font = "15px Comic Sans MS";
-    plot_context.fillStyle = "white";
-    plot_context.textAlign = "center";
-    plot_context.fillText(message, 150, 285);
-    plot_context.closePath();
+    draw_message(message,"white");
+    draw_message(message,"white");
+    draw_message(message,"white");
+    draw_message(message,"white");
 }
 
 function draw_point(x,y,color){

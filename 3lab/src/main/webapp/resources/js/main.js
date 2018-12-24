@@ -2,7 +2,6 @@ var plot_canvas;
 var plot_context;
 var x;
 var y;
-var r;
 var r_radio_button;
 var isWarningShown;
 function init() {
@@ -10,9 +9,7 @@ function init() {
     plot_context = plot_canvas.getContext("2d");
     r_radio_button = document.getElementsByName("R");
     draw_plot(plot_canvas,plot_context);
-    x;
-    y;
-    r = '-1';
+    r = -1;
     isWarningShown = false;
     initrListener();
     plot_canvas.addEventListener("click", onPlotClick, false);
