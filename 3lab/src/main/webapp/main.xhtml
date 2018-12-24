@@ -36,7 +36,8 @@
                 <div class="value-container">
                     <div class="value-label">Y</div>
                     <div class="value-elem">
-                        <h:inputText required="true" label="Y" id="y-input" size="5" styleClass="text" placeholder="(-5..5)"
+                        <h:inputText required="true" label="Y" id="y-input" size="5" styleClass="text"
+                                     placeholder="(-5..5)"
                                      value="#{main.y}">
                             <f:converter converterId="DoubleConverter"/>
                             <f:validateDoubleRange minimum="-5" maximum="5"/>
@@ -83,20 +84,38 @@
                                  action="#{main.AddNewPoint}"/>
             </div>
         </h:form>
-
+        <h2> Previous checkings results </h2>
         <div class="result-table">
-            <h:dataTable id="resultsTable" value="#{main.points}" var="result">
-                <h:column headerText="X">
-                    <h:outputText value="#{result.x}"/>
+            <h:dataTable id="resultsTable" value="#{main.points}" var="point">
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="X"/>
+                    </f:facet>
+                    <h:outputText value="#{point.x}"/>
                 </h:column>
-                <h:column headerText="Y">
-                    <h:outputText value="#{result.y}"/>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Y"/>
+                    </f:facet>
+                    <h:outputText value="#{point.y}"/>
                 </h:column>
-                <h:column headerText="R">
-                    <h:outputText value="#{result.r}"/>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="R"/>
+                    </f:facet>
+                    <h:outputText value="#{point.r}"/>
                 </h:column>
-                <h:column headerText="Result">
-                    <h:outputText value="#{result.hit ? 'Yes' : 'No'}"/>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="State"/>
+                    </f:facet>
+                    <h:form rendered="#{point.isMatched}">
+                        <h:outputText styleClass="matched-cell" value="Yes"/>
+                    </h:form>
+
+                    <h:form rendered="#{!point.isMatched}">
+                        <h:outputText styleClass="unmatched-cell" value="No"/>
+                    </h:form>
                 </h:column>
             </h:dataTable>
         </div>

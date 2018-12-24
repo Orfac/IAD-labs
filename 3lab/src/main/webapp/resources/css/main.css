@@ -24,7 +24,6 @@
 .value-elem{
     background-color: #B9C9ED;
     margin:auto;
-    border: 1px solid #7f8fab;
     padding: 5px 10px;
     width: 100%;
 }
@@ -35,7 +34,6 @@
     font-size: 20px;
     background-color: #B9C9ED;
     padding: 5px;
-    border: 1px solid #1c2f5e;
 }
 
 .button{
@@ -50,4 +48,31 @@
 
 .text{
     width: 100%;
+}
+
+table
+{
+    width: 50%;
+    margin: auto;
+}
+
+.result-table{
+    text-align: center;
+}
+
+td
+{
+    margin: auto;
+    padding: 5px;
+    background-color: #B9C9ED;
+}
+
+.matched-cell
+{
+    background-color: #267dee;
+}
+
+.unmatched-cell
+{
+    background-color: crimson;
 }

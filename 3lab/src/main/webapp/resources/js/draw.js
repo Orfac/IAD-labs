@@ -2,7 +2,7 @@ function draw_plot(canvas,context) {
     fill_white(canvas, context);
     context.beginPath();
     draw_circle(context);
-    draw_square(context);
+    draw_rectangle(context);
     draw_triangle(context);
     context.closePath();
     context.beginPath();
@@ -33,21 +33,22 @@ function draw_ox(context){
 function draw_triangle(context){
 
     context.moveTo(150, 150);
-    context.lineTo(100, 150);
+    context.lineTo(200, 150);
     context.lineTo(150, 250);
     context.lineTo(150, 150);
     context.fillStyle = '#3399ff';
     context.fill();
 }
 
-function draw_square(context){
-    context.rect(50, 50, 100, 100);
+function draw_rectangle(context){
+    context.rect(50, 150, 100, 50);
     context.fillStyle = '#3399ff';
+
     context.fill();
 }
 
 function draw_circle(context){
-    context.arc(150, 150, 100, 0, Math.PI/2);
+    context.arc(150, 150, 100, -Math.PI/2, 0);
     context.lineTo(150, 150);
     context.fillStyle = '#3399ff';
     context.fill();
