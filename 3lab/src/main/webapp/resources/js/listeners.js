@@ -15,7 +15,11 @@ function initrListener(){
 }
 
 function updateX(xBox) {
-    let b = document.getElementById('xValues');
+    let xValues = document.getElementsByClassName('x-checkbox');
+    for (let i = 0; i < xValues.length; i++) {
+        xValues[i].checked = false;
+    }
+    xBox.checked = true;
 }
 
 var xhttp;

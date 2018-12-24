@@ -16,15 +16,16 @@
 <h:body onload="init()">
     <div class="container">
         <h2>Проверка попадания точки</h2>
+        <h:inputHidden id="hiddenR"/>
         <ui:include src="graph.html"/>
-        <h:form action="#{main.AddNewPoint}" method="GET">
+        <h:form>
             <div class="value">
                 <div class="value-container" id="xValues">
                     <div class="value-label">X</div>
                     <ui:repeat value="#{main.xValues}" var="xValue" varStatus="status">
                         <div class="value-elem">
                             <div class="value-elem-label">#{main.getConvertedXValue(status.index)}</div>
-                            <h:selectBooleanCheckbox value="#{xValue}" valueChangeListener="#{main.updateX}" onclick="updateX(this)">
+                            <h:selectBooleanCheckbox styleClass="x-checkbox" value="#{xValue}" valueChangeListener="#{main.updateX}" onclick="updateX(this)">
                             </h:selectBooleanCheckbox>
                         </div>
                     </ui:repeat>
@@ -42,16 +43,37 @@
             <div class="value">
                 <div class="value-container">
                     <div class="value-label">R</div>
-                    <ui:repeat value="#{util.getYield(5)}" var="o" varStatus="status">
-                        <div class="value-elem">
-                            <div class="value-elem-label">#{status.index + 1}</div>
-                            <h:commandButton styleClass="button"  type="button"/>
-                        </div>
-                    </ui:repeat>
+                    <div class="value-elem">
+                        <h:commandButton styleClass="button" value="1" type="button" action="#{main.setR(1)}">
+                            <f:ajax execute="@this"/>
+                        </h:commandButton>
+                    </div>
+                    <div class="value-elem">
+                        <h:commandButton styleClass="button" value="2" type="button" action="#{main.setR(2)}">
+                            <f:ajax execute="@this"/>
+                        </h:commandButton>
+                    </div>
+                    <div class="value-elem">
+                        <h:commandButton styleClass="button" value="3" type="button" action="#{main.setR(3)}">
+                            <f:ajax execute="@this"/>
+                        </h:commandButton>
+                    </div>
+                    <div class="value-elem">
+                        <h:commandButton styleClass="button" value="4" type="button" action="#{main.setR(4)}">
+                            <f:ajax execute="@this"/>
+                        </h:commandButton>
+                    </div>
+                    <div class="value-elem">
+                        <h:commandButton styleClass="button" value="5" type="button" action="#{main.setR(5)}">
+                            <f:ajax execute="@this"/>
+                        </h:commandButton>
+                    </div>
+
+
                 </div>
             </div>
             <div class="value">
-                <h:commandButton styleClass="button" value="Проверить точку" type="submit"/>
+                <h:commandButton styleClass="button" value="Проверить точку" type="submit" action="#{main.AddNewPoint}"/>
             </div>
         </h:form>
     </div>

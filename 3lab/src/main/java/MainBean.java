@@ -8,18 +8,16 @@ import java.io.Serializable;
 
 public class MainBean implements Serializable {
 
-
     private Boolean[] xValues;
     private String yValue;
-    private Point point;
-
+    private int R;
 
     public MainBean(){
-        point = null;
         xValues = new Boolean[6];
         for (int i = 0; i < 6; i++) {
             xValues[i] = Boolean.FALSE;
         }
+        xValues[0] = true;
         yValue = "1,52";
     }
 
@@ -55,10 +53,12 @@ public class MainBean implements Serializable {
         this.xValues = xValues;
     }
 
-
     public void AddNewPoint() {
-       int a;
-       int b;
-       a = 0;
+        Point point = new Point(1,2,3);
+        int a = 2;
+    }
+
+    public void setR(int R) {
+        this.R = R;
     }
 }
