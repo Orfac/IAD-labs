@@ -18,6 +18,8 @@ public class MainBean implements Serializable {
     private AreaChecker checker;
     private String response;
 
+    private PointEntityManager manager;
+
     public MainBean() {
         xValues = new Boolean[6];
         for (int i = 0; i < 6; i++) {
@@ -27,6 +29,7 @@ public class MainBean implements Serializable {
         R = 1;
         checker = new AreaChecker();
         points = new ArrayList<Point>();
+        manager = new PointEntityManager();
     }
 
     public double getConvertedXValue(int number) {

@@ -17,13 +17,13 @@
     <div class="container">
         <h2>Point hit checking</h2>
         <h:form>
-            <h:inputHidden id="hiddenX" value="#{main.XValue}"></h:inputHidden>
-            <h:inputHidden id="hiddenY"  value="#{main.y}"></h:inputHidden>
-            <h:inputHidden id="hiddenR"  value="#{main.r}"></h:inputHidden>
-            <h:outputLabel value="#{main.response}" style="display:none" id="output-ajax"> </h:outputLabel>
+            <h:inputHidden id="hiddenX" value="#{main.XValue}"/>
+            <h:inputHidden id="hiddenY"  value="#{main.y}"/>
+            <h:inputHidden id="hiddenR"  value="#{main.r}"/>
+            <h:outputLabel id="output" value="#{main.response}" />
             <h:commandButton style="display:none" type="button" id="ajax-button"
                              action="#{main.CheckHit}">
-                <f:ajax execute="@form" render="output-ajax"/>
+                <f:ajax execute="@form" render="output" onevent="onSuccess"/>
             </h:commandButton>
         </h:form>
 

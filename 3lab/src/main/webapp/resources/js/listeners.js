@@ -11,6 +11,8 @@ function updateX(xBox) {
     xBox.checked = true;
 }
 
+let graphX;
+let graphY;
 function onPlotClick(e) {
     if(r === -1) {
         if (!isWarningShown){
@@ -21,8 +23,8 @@ function onPlotClick(e) {
         isWarningShown = false;
         clean_warning("R не задано");
         getCursorPosition(e);
-        let graphX = x;
-        let graphY = y;
+        graphX = x;
+        graphY = y;
 
         x -= 150;
         x = x/100*r;
@@ -32,10 +34,21 @@ function onPlotClick(e) {
         y = y/100*r;
 
 
-        document.getElementById("j_idt11:hiddenX").textContent = toString(x);
-        document.getElementById("j_idt11:hiddenY").textContent = toString(y);
-        document.getElementById("j_idt11:hiddenR").textContent = toString(r);
+        document.getElementById("j_idt11:hiddenX").value = x.toString();
+        document.getElementById("j_idt11:hiddenY").value = y.toString();
+        document.getElementById("j_idt11:hiddenR").value = r.toString();
         document.getElementById("j_idt11:ajax-button").click();
+
+
+    }
+}
+
+function onSuccess() {
+    let checkResult = document.getElementById("j_idt11:output").textContent;
+    if (checkResult === "1"){
+        draw_point(graphX,graphY,"green");
+    } else {
+        draw_point(graphX,graphY,"red");
     }
 }
 
