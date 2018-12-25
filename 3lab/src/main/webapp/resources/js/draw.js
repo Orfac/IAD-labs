@@ -80,9 +80,21 @@ function clean_warning(message) {
     draw_message(message,"white");
 }
 
-function draw_point(x,y,color){
+function draw_point(x,y,color,isReal){
     plot_context.beginPath();
-    plot_context.arc(x, y, 3, 0, 2 * Math.PI);
+    if (isReal){
+        let x2 = x / r * 100;
+        x2 += 150;
+
+        let y2 = y / r * 100;
+        y2 *= -1;
+        y2 += 150;
+
+        plot_context.arc(x2, y2, 3, 0, 2 * Math.PI);
+    } else {
+        plot_context.arc(x, y, 3, 0, 2 * Math.PI);
+    }
+
     plot_context.fillStyle = color;
     plot_context.fill();
     plot_context.closePath();

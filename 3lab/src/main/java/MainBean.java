@@ -28,7 +28,6 @@ public class MainBean implements Serializable {
         R = 1;
         checker = new AreaChecker();
         points = new ArrayList<Point>();
-        creator = new EntityManagerCreator();
     }
 
     public double getConvertedXValue(int number) {

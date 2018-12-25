@@ -16,11 +16,18 @@
 <h:body onload="init()">
     <div class="container">
         <h2>Point hit checking</h2>
+        <div class="footerClass">
+            <div class="link-to-main">
+                <h:link action="index" outcome="index">
+                    Перейти на главную страницу
+                </h:link>
+            </div>
+        </div>
         <h:form>
             <h:inputHidden id="hiddenX" value="#{main.XValue}"/>
             <h:inputHidden id="hiddenY"  value="#{main.y}"/>
             <h:inputHidden id="hiddenR"  value="#{main.r}"/>
-            <h:outputLabel id="output" value="#{main.response}" />
+            <h:outputLabel style="display: none;" id="output" value="#{main.response}" />
             <h:commandButton style="display:none" type="button" id="ajax-button"
                              action="#{main.CheckHit}">
                 <f:ajax execute="@form" render="output" onevent="onSuccess"/>

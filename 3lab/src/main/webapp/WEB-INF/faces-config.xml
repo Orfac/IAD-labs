@@ -9,8 +9,23 @@
         <managed-bean-class>MainBean</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
+
     <converter>
         <converter-id>DoubleConverter</converter-id>
         <converter-class>DoubleConverter</converter-class>
     </converter>
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>index</from-outcome>
+            <to-view-id>/main.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>main</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+
+    </navigation-rule>
+
+
 </faces-config>
