@@ -62,4 +62,8 @@ public class User {
     public void setPointList(List<Point> pointList) {
         this.pointList = pointList;
     }
+
+    public boolean isNew() {
+        return id == null;
+    }
 }

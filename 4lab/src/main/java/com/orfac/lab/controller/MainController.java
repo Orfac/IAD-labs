@@ -4,7 +4,12 @@ import com.orfac.lab.model.Point;
 import com.orfac.lab.model.User;
 import com.orfac.lab.repository.PointRepository;
 import com.orfac.lab.repository.UserRepository;
+import com.orfac.lab.request.PointCheckRequest;
+import com.orfac.lab.service.PointChecker;
+import com.orfac.lab.validator.PointCheckValidator;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.ui.ModelMap;
@@ -13,6 +18,7 @@ import org.springframework.validation.Validator;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 @CrossOrigin(origins = {"https://se.ifmo.ru", "http://localhost"}, maxAge = 3600)
@@ -21,10 +27,11 @@ import java.util.List;
 public class MainController {
 
     @Autowired
-    private AbstractAreaCheckCalculator areaCheckCalculator;
+    private PointChecker checker;
 
     @Autowired
-    private Validator areaCheckRequestValidator;
+    @Qualifier("pointCheckValidator")
+    private Validator pointValidator;
 
     @Autowired
     private UserRepository userRepository;
@@ -32,7 +39,7 @@ public class MainController {
     @Autowired
     private PointRepository pointRepository;
 
-    @Autowired
+    @Resource
     private PasswordEncoder passwordEncoder;
 
 
@@ -40,23 +47,23 @@ public class MainController {
     public User getUser() {
         Object o = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (o instanceof UserPrincipalImpl) {
-            return userRepository.findByName(((UserPrincipalImpl) o).getUsername());
+            return userRepository.findByLogin(((UserPrincipalImpl) o).getLogin());
         } else {
             return null;
         }
     }
 
     @RequestMapping(value = "register", method = RequestMethod.POST)
-    public String register(@RequestParam String username, @RequestParam String password) {
-        User user = userRepository.findByName(username);
+    public String register(@RequestParam String login, @RequestParam String password) {
+        User user = userRepository.findByLogin(login);
         if (password == null || password.trim().isEmpty()) {
             return "{\"error\": \"пароль не может быть пустой строкой\"}";
         }
         if (user == null) {
-            userRepository.save(new User(username, passwordEncoder.encode(password)));
+            userRepository.save(new User(login, passwordEncoder.encode(password)));
             return null;
         } else {
-            return "{\"error\": \"имя " + username + " уже зарегистрировано\"}";
+            return "{\"error\": \"имя " + login + " уже зарегистрировано\"}";
         }
 
     }
@@ -73,16 +80,16 @@ public class MainController {
 
 
     @RequestMapping(value = "check", method = RequestMethod.POST, consumes = {"application/json"})
-    public ResponseEntity check(@RequestBody AreaCheckRequest areaCheckRequest, BindingResult bindingResult,
+    public ResponseEntity check(@RequestBody PointCheckRequest pointCheckRequest, BindingResult bindingResult,
                                 @ModelAttribute("user") User user
     ) {
-        areaCheckRequestValidator.validate(areaCheckRequest, bindingResult);
+        pointValidator.validate(pointCheckRequest, bindingResult);
         if (bindingResult.hasErrors()) {
             return ResponseEntity.badRequest().body(bindingResult.getAllErrors());
         }
-        Point point = areaCheckCalculator.getResult(areaCheckRequest);
+        Point point = checker.getResult(pointCheckRequest);
         point.setUser(user);
-        user.addCheckResult(point);
+        user.addPoint(point);
         userRepository.save(user);
         return ResponseEntity.ok(point);
     }

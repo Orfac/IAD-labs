@@ -18,4 +18,47 @@ public class Point {
     private boolean isTargetHitted;
 
 
+    public double getX() {
+        return x;
+    }
+
+    public void setX(double x) {
+        this.x = x;
+    }
+
+    public double getY() {
+        return y;
+    }
+
+    public void setY(double y) {
+        this.y = y;
+    }
+
+    public double getR() {
+        return r;
+    }
+
+    public void setR(double r) {
+        this.r = r;
+    }
+
+    public boolean isTargetHitted() {
+        return isTargetHitted;
+    }
+
+    public void setTargetHitted(boolean targetHitted) {
+        isTargetHitted = targetHitted;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public boolean isNew() {
+        return id == null;
+    }
 }
