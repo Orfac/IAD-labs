@@ -1,12 +1,12 @@
 package com.orfac.lab.controller;
 
+import com.orfac.lab.auth.UserPrincipalImpl;
 import com.orfac.lab.model.Point;
 import com.orfac.lab.model.User;
 import com.orfac.lab.repository.PointRepository;
 import com.orfac.lab.repository.UserRepository;
 import com.orfac.lab.request.PointCheckRequest;
 import com.orfac.lab.service.PointChecker;
-import com.orfac.lab.validator.PointCheckValidator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -21,7 +21,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import javax.annotation.Resource;
 import java.util.List;
 
-@CrossOrigin(origins = {"https://se.ifmo.ru", "http://localhost"}, maxAge = 3600)
+@CrossOrigin(origins = {"https://se.ifmo.ru", "http://localhost:3000"}, maxAge = 3600)
 @RestController(value = "/api")
 @RequestMapping("/api")
 public class MainController {
@@ -39,7 +39,7 @@ public class MainController {
     @Autowired
     private PointRepository pointRepository;
 
-    @Resource
+    @Autowired
     private PasswordEncoder passwordEncoder;
 
 
@@ -47,7 +47,7 @@ public class MainController {
     public User getUser() {
         Object o = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (o instanceof UserPrincipalImpl) {
-            return userRepository.findByLogin(((UserPrincipalImpl) o).getLogin());
+            return userRepository.findByLogin(((UserPrincipalImpl) o).getUsername());
         } else {
             return null;
         }
@@ -57,13 +57,13 @@ public class MainController {
     public String register(@RequestParam String login, @RequestParam String password) {
         User user = userRepository.findByLogin(login);
         if (password == null || password.trim().isEmpty()) {
-            return "{\"error\": \"пароль не может быть пустой строкой\"}";
+            return "{\"error\": \"password can't be empty\"}";
         }
         if (user == null) {
             userRepository.save(new User(login, passwordEncoder.encode(password)));
             return null;
         } else {
-            return "{\"error\": \"имя " + login + " уже зарегистрировано\"}";
+            return "{\"error\": \"login " + login + " has already taken\"}";
         }
 
     }
@@ -87,7 +87,7 @@ public class MainController {
         if (bindingResult.hasErrors()) {
             return ResponseEntity.badRequest().body(bindingResult.getAllErrors());
         }
-        Point point = checker.getResult(pointCheckRequest);
+        Point point = checker.getResultPoint(pointCheckRequest);
         point.setUser(user);
         user.addPoint(point);
         userRepository.save(user);
