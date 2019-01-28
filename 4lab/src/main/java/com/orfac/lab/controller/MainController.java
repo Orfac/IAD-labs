@@ -18,10 +18,9 @@ import org.springframework.validation.Validator;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import javax.annotation.Resource;
 import java.util.List;
 
-@CrossOrigin(origins = {"https://se.ifmo.ru", "http://localhost:3000"}, maxAge = 3600)
+@CrossOrigin(value = "http://localhost:3000", maxAge = 3600)
 @RestController(value = "/api")
 @RequestMapping("/api")
 public class MainController {
@@ -74,9 +73,13 @@ public class MainController {
     }
 
     @RequestMapping(value = "history", method = RequestMethod.GET)
-    public List<Point> getChecksHistory(ModelMap modelMap) {
-        return pointRepository.findFirst50ByUserOrderByIdDesc(((User) modelMap.get("user")));
+    public ResponseEntity getChecksHistory(@ModelAttribute("user") User user) {
+        if (user == null){
+            return ResponseEntity.badRequest().body("Ploho vse");
+        }
+        return ResponseEntity.ok().body(pointRepository.findAllByUser(user));
     }
+
 
 
     @RequestMapping(value = "check", method = RequestMethod.POST, consumes = {"application/json"})
@@ -90,6 +93,7 @@ public class MainController {
         Point point = checker.getResultPoint(pointCheckRequest);
         point.setUser(user);
         user.addPoint(point);
+        pointRepository.save(point);
         userRepository.save(user);
         return ResponseEntity.ok(point);
     }

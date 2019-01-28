@@ -21,7 +21,7 @@ public class Point {
     private double x;
     private double y;
     private double r;
-    private boolean isTargetHitted;
+    private boolean result;
 
 
     public double getX() {
@@ -48,13 +48,7 @@ public class Point {
         this.r = r;
     }
 
-    public boolean isTargetHitted() {
-        return isTargetHitted;
-    }
 
-    public void setTargetHitted(boolean targetHitted) {
-        isTargetHitted = targetHitted;
-    }
 
     public User getUser() {
         return user;
@@ -66,5 +60,13 @@ public class Point {
 
     public boolean isNew() {
         return id == null;
+    }
+
+    public boolean isResult() {
+        return result;
+    }
+
+    public void setResult(boolean result) {
+        this.result = result;
     }
 }

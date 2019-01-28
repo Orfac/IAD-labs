@@ -17,13 +17,13 @@ public class PointChecker {
         resultPoint.setR(r);
 
         if (x >= 0 && y >=0){
-            resultPoint.setTargetHitted(x<=r && y<=r);
+            resultPoint.setResult(x<=r && y<=r);
         } else if (x <=0 && y <= 0){
-            resultPoint.setTargetHitted(y <= x - r / 2);
+            resultPoint.setResult(y >= (-1)*x - r / 2);
         } else if (x >=0 && y <=0){
-            resultPoint.setTargetHitted(x*x + y*y <= r*r);
+            resultPoint.setResult(x*x + y*y <= r*r);
         } else {
-            resultPoint.setTargetHitted(false);
+            resultPoint.setResult(false);
         }
 
         return resultPoint;
