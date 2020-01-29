@@ -1,0 +1,63 @@
+.table-elem{
+    padding: 5px;
+    border: 1px lightblue solid;
+}
+
+.error {
+    color : red;
+}
+
+#root{
+    height: 100%;
+}
+
+.main{
+    height: 100%;
+}
+
+.table-true{
+    color: white;
+    background-color: lightgreen;
+}
+
+.table-false{
+    color: white;
+    background-color: lightcoral;
+}
+
+@media (min-width: 686px) {
+    .main-elem{
+        display: inline-block;
+        text-align: center;
+        margin-left: 20%;
+    }
+    .main-table{
+        text-align: center; 
+    }
+    table{
+        width: 50%;
+        margin: 1rem auto auto;
+    }
+
+}
+@media (min-width: 1227px) {
+    .main-elem{
+        display: inline-block;
+        text-align: center;
+        margin-left: 10%;
+        height: 100%;
+    }
+    .main-table{
+        display: inline-block;
+        text-align: center;
+        margin-left: 10%;
+        height: auto;
+    }
+    table{
+        margin: 1rem auto auto;
+    }
+}
+
+
+@media (max-width: 686px) {
+}

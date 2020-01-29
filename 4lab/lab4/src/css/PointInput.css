@@ -1,0 +1,10 @@
+.checkboxes{
+    display: flex;
+}
+
+.check-point-button{
+    padding: 5px;
+    background-color: dodgerblue;
+    color: white;
+    
+}

@@ -1,0 +1,30 @@
+.auth-button{
+    padding: 0.5rem;
+    background-color: cornflowerblue;
+    color: white;
+}
+
+
+@media (min-width: 1227px) {
+    .student-info-item{
+        text-align: center;
+        display: inline;
+        margin-left: 1rem; 
+    }
+}
+
+
+@media (max-width: 686px) {
+}
+@media (min-width: 686px) {
+    .student-info{
+        text-align: center;
+    }
+    .auth-form{
+        text-align: center;
+    }
+    .auth-action{
+        margin-top: 1rem;
+    }
+
+}
